@@ -1,2 +1,5 @@
 # Mac-trash
 .DS_Store
+
+# executables
+*.o
