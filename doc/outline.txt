@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------------------
+# Program
+# -----------------------------------------------------------------------------
+
+- Class for an Ising lattice
+  - elements: lattice, lattice_size, energy, magnetization, temperature
+  - needed functions:
+    - generate random lattice
+    - calculate energy of lattice
+    - calculate magnetization of lattice
+    - flip (execution and probability)
+    - calculate energy change after flip
+    - calculate magnetization change after flip
+  - members:
+    - GenerateLattice(size, temperature) (random lattice + energy + magnetization)
+    - Flip (probability + execution + energy + magnetization)
