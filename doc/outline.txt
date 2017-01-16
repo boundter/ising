@@ -1,9 +1,27 @@
 # -----------------------------------------------------------------------------
+# Open questions
+# -----------------------------------------------------------------------------
+
+
+- How is T_c defined and where is it?
+
+- How do we get the correlation and so on?
+
+
+# -----------------------------------------------------------------------------
 # Program
 # -----------------------------------------------------------------------------
 
+
 - Class for an Ising lattice
-  - elements: lattice, lattice_size, energy, magnetization, temperature
+  - elements: lattice, lattice_size, energy, magnetization, temperature, RNG
+  - RNG for the probability of a flip and the initial lattice -> uniform and RNG to sample the spin (could we use the same?)
+  - types:
+    - double T = temperature
+    - int M = magnetization
+    - int E = energy
+    - int L = lattice size
+    - vector<vector<int>> lattice = lattice (size = (L+1)x(L+1), padded with 0)
   - needed functions:
     - generate random lattice
     - calculate energy of lattice
@@ -12,5 +30,24 @@
     - calculate energy change after flip
     - calculate magnetization change after flip
   - members:
-    - GenerateLattice(size, temperature) (random lattice + energy + magnetization)
-    - Flip (probability + execution + energy + magnetization)
+    - GenerateLattice(L, T) (random lattice + energy + magnetization)
+    - Flip() (probability + execution + energy + magnetization)
+    - lattice() returns unpadded lattice
+
+- Header
+  - contains T and L
+  - WriteHeader(lattice, datafile)
+
+# -----------------------------------------------------------------------------
+# Open questions
+# -----------------------------------------------------------------------------
+
+
+- How does the metropolis algorithm work?
+We randomly choose a point on the lattice and change its spin. If this decreases the energy, than we always accept it. If it increases the energy we accept it with probability exp(-\DeltaE/T). For small T this value is small and we seldom flip a spin. If it is big however this probability becomes very big and we often flip in "worse" states.
+
+- What are we interested in?
+We are mostly interested in M, the magnetization, defined by M = \sum_i s_i, where s_i is the spin at position i.
+
+- Which data do we need?
+We need the magnetization for different temperatures and lattice-sizes, as well as the CPU-time. So in a header, there should be the used temperature and lattice-size.
