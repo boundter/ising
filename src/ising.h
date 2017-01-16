@@ -4,6 +4,7 @@
 #include <vector>
 #include <random>
 #include <cmath>
+#include <map>
 // Debug
 #include <iostream>
 
@@ -15,14 +16,14 @@ class Ising {
   int E_;
   int L_;
   std::vector<std::vector<int> > lattice_;
-  std::vector<double> accept_;
+  std::map<int, double> accept_;
   std::mt19937_64 RNG_;
   std::uniform_real_distribution<double> prob_;
   std::uniform_int_distribution<int> pos_;
 
   // Functions
-  void DeltaE(int i, int j);
-  void DeltaM(int i, int j);
+  double DeltaE(int i, int j);
+  double DeltaM(int i, int j);
   void CalcE();
   void CalcM();
 
@@ -37,6 +38,7 @@ public:
   // Functions
   Ising(int L, double T, long seed=600);
   void Flip();
+  // Debug!
   void PrintLattice();
 };
 
