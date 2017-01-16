@@ -2,9 +2,9 @@
 #define __ISING__
 
 #include <vector>
-#include <random>
-#include <cmath>
 #include <map>
+#include <random> /* mt19937, uniform_real/int_distribution */
+#include <cmath> /* exp*/
 // Debug
 #include <iostream>
 
@@ -32,7 +32,7 @@ public:
   double T() { return T_; }
   int M() { return M_; }
   int E() { return E_; }
-  int L() { return L_ - 1; }
+  int L() { return L_ - 2; }
   std::vector<std::vector<int> > lattice();
 
   // Functions
