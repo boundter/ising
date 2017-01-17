@@ -1,45 +1,42 @@
 #ifndef __ISING__
 #define __ISING__
 
+
 #include <vector>
 #include <map>
 #include <random> /* mt19937, uniform_real/int_distribution */
 #include <cmath> /* exp*/
-// Debug
-#include <iostream>
 
 
 class Ising {
   // Parameters and Variables
-  double T_;
-  int M_;
-  int E_;
-  int L_;
+  double T_; // temperature
+  int M_; // magnetization
+  int E_; // energy
+  int L_; // lattice-size + padding
   std::vector<std::vector<int> > lattice_;
-  std::map<int, double> accept_;
+  std::map<int, double> accept_; // possible values for acceptance of flip
   std::mt19937_64 RNG_;
-  std::uniform_real_distribution<double> prob_;
-  std::uniform_int_distribution<int> pos_;
+  std::uniform_real_distribution<double> prob_; // distribution for probability
+  std::uniform_int_distribution<int> pos_; // distribution for picking position
 
   // Functions
-  double DeltaE(int i, int j);
-  double DeltaM(int i, int j);
-  void CalcE();
-  void CalcM();
+  double DeltaE(int i, int j); // calculate change of energy after flip
+  double DeltaM(int i, int j); // calculate change of magnetization after flip
+  void CalcE(); // calculate energy of lattice
+  void CalcM(); // calculate magnetization of lattice
 
 public:
   // Acces to private
-  double T() { return T_; }
-  int M() { return M_; }
-  int E() { return E_; }
-  int L() { return L_ - 2; }
-  std::vector<std::vector<int> > lattice();
+  double T() { return T_; } // get temperature
+  int M() { return M_; } // get magnetization
+  int E() { return E_; } // get energy
+  int L() { return L_ - 2; } // get lattice-size
+  std::vector<std::vector<int> > lattice(); // get unpadded lattice
 
   // Functions
-  Ising(int L, double T, long seed=600);
-  void Flip();
-  // Debug!
-  void PrintLattice();
+  Ising(int L, double T, long seed=600); // construct random lattice + E & M
+  void Flip(); // do a flip for the metropolis-algorithm
 };
 
 #endif

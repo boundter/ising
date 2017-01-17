@@ -33,6 +33,7 @@ int main() {
       string filename = folder + file;
       FILE * datafile = fopen(filename.c_str(), "w");
       WriteHeader(ising, datafile);
+
       for (int i = 1; i <= n_sweeps; ++i) {
         for (int j = 0; j < ising.L()*ising.L(); ++j) {
           ising.Flip();
@@ -41,18 +42,21 @@ int main() {
         fflush(datafile);
       }
       fclose(datafile);
+
       // snapshot
       sprintf(file, "snap_%d_%.3f.dat", ising.L(), ising.T());
       filename = folder + file;
       datafile = fopen(filename.c_str(), "w");
       WriteHeader(ising, datafile);
       vector<vector<int> > lattice = ising.lattice();
+
       for (int i = 0; i < ising.L(); ++i) {
         for (int j = 0; j < ising.L(); ++j) {
           fprintf(datafile, "%.d ", lattice[i][j]);
         }
         fprintf(datafile, "\n");
       }
+
       fclose(datafile);
     }
   }
