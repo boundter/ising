@@ -3,3 +3,9 @@
 
 # executables
 *.o
+
+# jupyter-trash
+.ipynb_checkpoints
+
+# python-trash
+__pycache__
