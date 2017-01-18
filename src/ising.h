@@ -5,7 +5,7 @@
 #include <vector>
 #include <map>
 #include <random> /* mt19937, uniform_real/int_distribution */
-#include <cmath> /* exp*/
+#include <cmath> /* exp, abs*/
 
 
 class Ising {
@@ -13,7 +13,7 @@ class Ising {
   double T_; // temperature
   int M_; // magnetization
   int E_; // energy
-  int L_; // lattice-size + padding
+  int L_; // lattice-size
   std::vector<std::vector<int> > lattice_;
   std::map<int, double> accept_; // possible values for acceptance of flip
   std::mt19937_64 RNG_;
@@ -31,8 +31,8 @@ public:
   double T() { return T_; } // get temperature
   int M() { return M_; } // get magnetization
   int E() { return E_; } // get energy
-  int L() { return L_ - 2; } // get lattice-size
-  std::vector<std::vector<int> > lattice(); // get unpadded lattice
+  int L() { return L_; } // get lattice-size
+  std::vector<std::vector<int> > lattice() { return lattice_; } // get lattice
 
   // Functions
   Ising(int L, double T, long seed=600); // construct random lattice + E & M
