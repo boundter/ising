@@ -1,4 +1,4 @@
-SOURCES = src/main.cpp src/ising.cpp
+SOURCES = src/main.cpp src/ising.cpp src/func.cpp
 EXEC = bin/ising.o
 
 all: $(EXEC)

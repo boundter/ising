@@ -1,24 +1,17 @@
-#include "ising.h"
 #include <cstdio>
 #include <string>
+#include "ising.h"
+#include "func.h"
 
 using namespace std;
 
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0])) // length of an array
 
-int L[1] = {30};
+int L[9] = {20, 30, 40, 50, 60, 70, 80, 90, 100};
 double T[10] = {0.5, 0.75, 1, 1.25, 1.5, 1.75, 2., 2.25, 2.5, 2.75};
 double n_sweeps = 100000;
 string folder = "result/data/";
 
-
-// ----------------------------------------------------------------------------
-// Functions
-// ----------------------------------------------------------------------------
-
-void WriteHeader(Ising ising, FILE * datafile) {
-  fprintf(datafile, "# L= %d , T= %.9f \n", ising.L(), ising.T());
-}
 
 // ----------------------------------------------------------------------------
 // Main
