@@ -108,3 +108,17 @@ void Ising::Flip() {
     }
   }
 }
+
+
+void Ising::SetLattice(std::vector<std::vector<int> > lattice) {
+  L_ = lattice.size();
+  // make sure the lattice has the right dimensions
+  for (int i = 0; i < L_; ++i) {
+    assert(lattice[i].size() == L_);
+  }
+  // get new size of lattice
+  pos_ = std::uniform_int_distribution<int> (0, L_ - 1);
+  // Calculate energy and magnetization of lattice
+  CalcE();
+  CalcM();
+}
