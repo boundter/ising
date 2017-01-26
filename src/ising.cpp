@@ -16,7 +16,8 @@ Ising::Ising(int L, double T, long seed /*=600*/) {
   lattice_.resize(L_, row);
   for (int i = 0; i < L_; ++i) {
     for (int j = 0; j < L_; ++j) {
-      double ran = prob_(RNG_);
+      //double ran = prob_(RNG_);
+      double ran = 0;
       if (ran < 0.5){
         lattice_[i][j] = -1;
       }
