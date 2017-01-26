@@ -3,10 +3,6 @@
 # -----------------------------------------------------------------------------
 
 
-- How is T_c defined and where is it?
-
-- How do we get the correlation and so on?
-
 
 # -----------------------------------------------------------------------------
 # Program
@@ -51,3 +47,12 @@ We are mostly interested in M, the magnetization, defined by M = \sum_i s_i, whe
 
 - Which data do we need?
 We need the magnetization for different temperatures and lattice-sizes, as well as the CPU-time. So in a header, there should be the used temperature and lattice-size.
+
+- How is T_c defined and where is it?
+T_c is the critical temperature, where the magnetization of the equilibrium-state changes. For T < T_c the system always reaches full order, so M is at its maximum. Around T_c there is a transition and for T > T_c the system is unordered and M is around 0. The critical temperature is around T_c = 2.2 * J.
+
+- How should the correlation look?
+For T > T_c there should be no correlation, since the m just randomly oscillates around 0.
+For T < T_c we have to discern between the transient and the stationary process.
+For the stationary process it should be 0, because it again randomly oscillates, but around 1 instead of 0. For the transient, there should be a correlation. Since the system starts around 0 and increases to |m|=1, so at every successive time steps the |m| is in the average bigger. This means, that the correlations should be constant.
+If we take the autocorrelation over the complete time, than we can't just superimpose them. For very long times it should be around 0, but before that it has to have a finite value. For increasingly large correlation times we get increasingly more stationarity in our transient, so it approaches 0. This means it should be something like a decaying function (linear, exponential, whatever).
