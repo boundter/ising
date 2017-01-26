@@ -110,6 +110,15 @@ void Ising::Flip() {
 }
 
 
+void Ising::SetT(double T) {
+  T_ = T;
+  // Fill vector of all possible probs to accept a flip to save computation time
+  accept_[4] = exp(-4/T_);
+  accept_[8] = exp(-8/T_);
+}
+
+
+
 void Ising::SetLattice(std::vector<std::vector<int> > lattice) {
   L_ = lattice.size();
   // make sure the lattice has the right dimensions

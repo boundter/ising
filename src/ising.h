@@ -39,7 +39,7 @@ public:
   Ising(int L, double T, long seed=600); // construct random lattice + E & M
   void Flip(); // do a flip for the metropolis-algorithm
   void SetLattice(std::vector<std::vector<int> > lattice);
-  void SetT(double T) {T_ = T;};
+  void SetT(double T);
 };
 
 #endif
