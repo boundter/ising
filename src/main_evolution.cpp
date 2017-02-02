@@ -7,8 +7,8 @@ using namespace std;
 
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0])) // length of an array
 
-int L[9] = {20, 30, 40, 50, 60, 70, 80, 90, 100};
-double T[10] = {0.5, 0.75, 1, 1.25, 1.5, 1.75, 2., 2.25, 2.5, 2.75};
+int L[1] = {100};
+double T[7] = {1.0, 2.0, 2.2, 2.3, 2.5, 3.0, 4.0};
 double n_sweeps = 100000;
 string folder = "result/data/";
 
@@ -19,8 +19,11 @@ string folder = "result/data/";
 
 int main() {
   for (int l = 0; l < NELEMS(L); ++l) {
+    Ising ising (L[l], 0);
+    ising.SetUniformState();
     for (int t = 0; t < NELEMS(T); ++t) {
-      Ising ising (L[l], T[t]);
+      ising.SetT(T[t]);
+      
       char file[128];
       sprintf(file, "M_%d_%.3f.dat", ising.L(), ising.T());
       string filename = folder + file;
