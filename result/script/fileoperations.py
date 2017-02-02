@@ -47,7 +47,7 @@ def ReadFile(filename, number_headers, delim):
                     value = header[indx + 1]
                     value_dict[key] = float(value)
         for row in csv_reader:
-            data.append([float(value) for value in row])
+            data.append([float(value) for value in row if value != ""])
     data = np.array(data, dtype=np.float64).transpose()
     return value_dict, data
 
