@@ -16,7 +16,6 @@ Ising::Ising(int L, double T, long seed /*=600*/) {
   lattice_.resize(L_, row);
   for (int i = 0; i < L_; ++i) {
     for (int j = 0; j < L_; ++j) {
-      //double ran = prob_(RNG_);
       double ran = 0;
       if (ran < 0.5){
         lattice_[i][j] = -1;
@@ -116,4 +115,13 @@ void Ising::SetT(double T) {
   // Fill vector of all possible probs to accept a flip to save computation time
   accept_[4] = exp(-4/T_);
   accept_[8] = exp(-8/T_);
+}
+
+
+void Ising::SetUniformState() {
+  for (int i = 0; i < L_; ++i) {
+    for (int j = 0; j < L_; ++j) {
+      lattice_[i][j] = 1;
+    }
+  }
 }

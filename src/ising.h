@@ -37,6 +37,7 @@ public:
 
   // Functions
   Ising(int L, double T, long seed=600); // construct random lattice + E & M
+  void SetUniformState();
   void Flip(); // do a flip for the metropolis-algorithm
   void SetT(double T);
 };
