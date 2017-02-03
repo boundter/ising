@@ -2,6 +2,8 @@
 #define __FUNC__
 
 #include <cstdio>
+#include <vector>
+#include <random>
 #include "ising.h"
 
 // Write a header to the datafile containing L and T.

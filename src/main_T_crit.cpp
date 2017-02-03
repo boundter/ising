@@ -10,7 +10,7 @@ using namespace std;
 
 int L[5] = {20, 40, 60, 80, 100};
 double T_min = 0.5, T_max = 4.0, n_T = 60, T = T_min;
-double n_trans = 60000;
+double n_trans = 20000;
 double n_sweeps = 100000;
 string folder = "result/data/";
 
@@ -22,6 +22,8 @@ int main() {
   for (int l = 0; l < NELEMS(L); ++l) {
     T = T_min;
     Ising ising(L[l], T);
+    ising.SetUniformState();
+
 
     for (int t = 0; t < n_T; ++t) {
       double mean = 0, M2 = 0, n = 0;
