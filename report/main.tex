@@ -1,0 +1,39 @@
+\documentclass[a4paper, 11pt]{scrartcl}
+ \usepackage{graphicx}
+ \usepackage{fullpage}
+ \usepackage[utf8]{inputenc}
+ \usepackage{amsmath}
+ \usepackage{float}
+ \usepackage{amsthm}
+ \usepackage{hyperref}
+ \usepackage{subcaption}
+
+% To keep the font consistent across the text and the heading for roman font
+\setkomafont{sectioning}{\rmfamily\bfseries}
+
+%Author Notes
+\author{Erik Teichmann}
+\title{Computational physics \\ Ising Model}
+\date{\today}
+
+\graphicspath{{../result/plt/}}
+
+%user macros
+\newcommand{\norm}[1]{\left\vert\left\vert#1\right\vert\right\vert}
+\newcommand{\scproduct}[2]{\left\langle#1, #2\right\rangle}
+\newcommand{\abs}[1]{\left\vert#1 \right\vert}
+\newcommand{\timed}[1]{\frac{d #1}{dt}}
+\newcommand{\mean}[1]{\left\langle#1\right\rangle}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\input{src/introduction}
+\input{src/ising}
+\input{src/methods}
+\input{src/results}
+\input{src/conclusion}
+
+\end{document}
