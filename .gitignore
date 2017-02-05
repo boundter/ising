@@ -9,3 +9,9 @@
 
 # python-trash
 __pycache__
+
+# testfiles
+*test*
+
+# plots and report
+*.pdf
