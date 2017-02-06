@@ -1,1 +1,28 @@
 \section{Ising model}
+
+The Ising model describes the magnetic properties of a solid object by breaking it up in many small, elementary magnets. These magnets are the spins of some sub-system of the object and can point in two direction, associated with two possible spin values, $s_i = \pm 1$.\\
+These spins are ordered in a lattice, this can be an $N$-d lattice, although it is usually assumed to be a $2$-d one. This model has been solved analytically for an infinitely large lattice, but numerically we typically assume a finite lattice of length $L$ with periodic boundary conditions.\\
+The energy of the system is described by the Hamiltonian
+\begin{equation}
+H = - J \sum_{\left\langle i j \right\rangle} s_i s_j - B \sum_i s_i,
+\end{equation}
+where $J$ is the coupling between spins, $B$ an external magnetic field and $\left\langle i j \right\rangle$ denotes a sum over the nearest neighbors.\\
+The probability to be in one state is given by the Boltzmann-distribution and depend on the temperature. Let us define $\beta = {(k_B T)}^{-1}$, where $T$ is the temperature and $k_B$ the Boltzmann-constant. The the probability to be in a given state $\mu$ is
+\begin{equation}
+ p_{\mu} = \frac{e^{- \beta H_{\mu}}}{\sum_{\nu} e^{- \beta H_{\nu}}}.
+\end{equation}
+If the temperature is low, than $\beta$ is very big and only the states with the lowest energy $H$ will be populated, because the sum will be dominated by these terms and all spins point in the same direction. Should the temperature be high instead, then there will be a lot more states populated, and most of these will have the spins equally distributed. So the temperature of the system plays an important role.\\
+To get the magnetization $M$ from this lattice we simply have to add all the elementary magnets
+\begin{align}
+M & = \sum_i s_i, \\
+m & = \frac{M}{N},
+\end{align}
+where $N = L^2$ is the number of magnets. So $m$ is the average magnetization per lattice-site. This makes it easier to compare different lattice-sizes, since the results will all be about the same size.\\
+One of the interesting properties of this model is the phase transition. At a specific temperature, the magnetization suddenly drops and some other quantities like the specific heat diverge. This transition can be analytically described for an infinitely large lattice and happens at the critical temperature $T_{crit} = 2.269 J$.\\
+% TODO: improve this paragraph, maybe add note about conjugated variables
+The magnetic susceptibility $\chi$ is one of the quantities, that can be described with this model. It is defined by
+\begin{equation}
+ \chi = \frac{\beta}{N} \text{Var}(\abs{m}).
+\end{equation}
+Here Var$(\abs{m})$ denotes the variance $\mean{{(\abs{m} - \mean{\abs{m}})} ^2}$. For very low or high temperatures there is only a small range of magnetizations and energies available, so the variance is quite small and thus the susceptibility. But for temperatures around the phase transition there are a lot of possible states, between which the system can move, so the variance is quite big, as is the susceptibility.
+% TODO: Add short paragraph on finite-size scaling

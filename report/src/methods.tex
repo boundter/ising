@@ -1,1 +1,26 @@
 \section{Numerical methods}
+To solve the Ising-model numerically we could simply Brute-force all possible states and use the probability of every state to calculate quantities like the mean $\mean{m}$. But this would only work for very small lattices, since we have two possible spin-states for every lattice-site, there are $2^{L^2}$ possible states.\\
+Because there are so many states, it makes more sense to randomly sample them. This procedure is called a Monte-Carlo-Simulation. The states get randomly sampled according to their probability distribution, in this case according to the Boltzmann-distribution.\\
+One of the most popular algorithms for the Ising-model is the Metropolis-algorithm. At every step we choose randomly a lattice-site and flip the spin. This changes the energy $H$. If the state before the flip is $\mu$ and the state after $\nu$, then the probability to accept the flip is given by
+\begin{equation}
+  P(\mu \rightarrow \nu) =
+  \begin{cases}
+    1 , & \text{for} H_{\nu} \leq H_{\mu} \\
+    e^{-\beta (H_{\nu} - H_{\mu})}, & \text{for} H_{\nu} > H_{\mu}
+  \end{cases}.
+\end{equation}
+If the flip is accepted we keep state $\nu$ and advance to the next step. If it is rejected, then we return to state $\mu$ and choose a new lattice-site.\\
+This algorithm helps to sample all the possible states, but it also helps us to escape for local minimum, by sometimes taking a step, that is worse in the short run, but may bring us closer to the global minimum.\\
+
+Some of the quantities, that interest us are the magnetization $m$, the energy $E$. More precisely their mean and variance. They can be calculated by simply using their definition. But the autocorrelation function Corr$(t)$ for the magnetization would need a lot of computing time. This can be reduced by using the Fourier-transformation (denoted by a $\hat{}$ over the quantity) and by using the definition $m'(t) = m(t) - \mean{m}$.
+\begin{align}
+  \hat{\text{Corr}}(\omega) & = \int dt e^{i \omega t} \text{Corr}(t) \\
+  & = \int dt \; e^{i \omega t} \int dt'\; m'(t') m'(t'+t) \\
+  & = \int dt\; e^{i \omega t} \int dt'\; e^{-i \omega t'} e^{i \omega t'} m'(t') m'(t'+t) \\
+  & = \int dt'\; e^{-i \omega t'} m'(t') \int dt\; e^{i \omega (t' + t)} m'(t'+t) \\
+  \intertext{The second integral goes over all real numbers, and $t'$ is just a constant offset, so we can change the integration variable to $\tau = t + t'$ and $d \tau = dt$.}
+  & = \int dt'\; e^{-i \omega t'} m'(t') \int d\tau \; e^{i \omega \tau} m'(\tau) \\
+  & = \hat{m'}(- \omega) \hat{m'}(\omega) \\
+  \intertext{But $m'$ is a real function, so $\hat{m'}(- \omega) = \hat{m'}^*( \omega)$, where the $^*$ denotes the complex conjugate.}
+  & = \abs{\hat{m'}(\omega)}^2
+\end{align}
