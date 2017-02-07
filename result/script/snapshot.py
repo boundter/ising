@@ -11,7 +11,7 @@ for i in files:
     fig, ax = plt.subplots()
     ax.set_xlabel(r"$x$")
     ax.set_ylabel(r"$y$")
-    cax = ax.imshow(data, extent=(0, 100, 0, 100), interpolation='none',
+    cax = ax.imshow(-1*data, extent=(0, 100, 0, 100), interpolation='none',
                     cmap=cm.Greys)
     fig.tight_layout()
     fig.savefig("../plt/snapshot_%.3f.pdf" % i, dpi=300)

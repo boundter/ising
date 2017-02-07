@@ -3,7 +3,7 @@ import numpy as np
 from fileoperations import ReadFile
 import os
 
-plt.rcParams["figure.figsize"] = [8, 5]
+plt.rcParams["figure.figsize"] = [10, 5]
 plt.rcParams["font.size"] = 20
 
 files = os.listdir("../data/")

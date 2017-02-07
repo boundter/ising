@@ -1,12 +1,12 @@
 \section{Numerical methods}
-To solve the Ising-model numerically we could simply Brute-force all possible states and use the probability of every state to calculate quantities like the mean $\mean{m}$. But this would only work for very small lattices, since we have two possible spin-states for every lattice-site, there are $2^{L^2}$ possible states.\\
+To solve the Ising-model numerically we could simply Brute-force all possible states and use the probability of every state to calculate quantities like the mean $\mean{m}$. But this would only work for very small lattices, since we have two possible spin-states for every lattice-site, there are $2^{L^2}$ possible states. Using the symmetry of the spins we can reduce our problem to only consider half the states, since the energy $H$ is invariant to the transformation $s_i \to -s_i$, if there is no external field. There are a few more ways to reduce the number of states by realizing, that the system has some rotational invariances, but this does not reduce the sufficiently for a Brute-force method.\\
 Because there are so many states, it makes more sense to randomly sample them. This procedure is called a Monte-Carlo-Simulation. The states get randomly sampled according to their probability distribution, in this case according to the Boltzmann-distribution.\\
 One of the most popular algorithms for the Ising-model is the Metropolis-algorithm. At every step we choose randomly a lattice-site and flip the spin. This changes the energy $H$. If the state before the flip is $\mu$ and the state after $\nu$, then the probability to accept the flip is given by
 \begin{equation}
   P(\mu \rightarrow \nu) =
   \begin{cases}
-    1 , & \text{for} H_{\nu} \leq H_{\mu} \\
-    e^{-\beta (H_{\nu} - H_{\mu})}, & \text{for} H_{\nu} > H_{\mu}
+    1  &, \text{for} H_{\nu} \leq H_{\mu} \\
+    e^{-\beta (H_{\nu} - H_{\mu})} &, \text{for} H_{\nu} > H_{\mu}
   \end{cases}.
 \end{equation}
 If the flip is accepted we keep state $\nu$ and advance to the next step. If it is rejected, then we return to state $\mu$ and choose a new lattice-site.\\
@@ -24,3 +24,10 @@ Some of the quantities, that interest us are the magnetization $m$, the energy $
   \intertext{But $m'$ is a real function, so $\hat{m'}(- \omega) = \hat{m'}^*( \omega)$, where the $^*$ denotes the complex conjugate.}
   & = \abs{\hat{m'}(\omega)}^2
 \end{align}
+So the Fourier transformed Autocorrelation is simply the squared absolute of the offset magnetization $m'$. Using FFT (Fast Fourier transform), we can calculate the quite fast. And then we simply have to use the inverse transformation to get the autocorrelation. This seems roundabout, but saves computing time in comparison to using the definition of Corr$(t)$ directly.\\
+
+After we found the variance, mean and autocorrelation we need a measure for the error. We can't use the standard-deviation (stdev) directly, because the the quantities depend on a lot of measurements, so the stdev of $m$ is not the same as the stdev of $\mean{m}$.\\
+To still get a good estimate of the error for complex quantities we can use the bootstrap algorithm. First we one to look at, so let us take, for example, the susceptibility $\chi$. To calculate it we have a dataset of a given length $l$. We resample this data in a new dataset on length $l$ by randomly choosing a value of our original set. The value can be a duplicate of an element already in our new set. So in our new set we have a subset of our original data and use this to calculate the susceptibility $\chi$. This process is repeated multiple times, then the stdev $\sigma$ of the susceptibility is given by
+\begin{equation}
+  \sigma = \sqrt{\mean{\chi^2} - \mean{\chi}^2}
+\end{equation}

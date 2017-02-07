@@ -1,1 +1,77 @@
 \section{Results}
+
+% -----------------------------------------------------------------------------
+% Time evolution
+% -----------------------------------------------------------------------------
+
+\subsection{Time evolution}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.7\textwidth]{evolution}
+  \caption{Time evolution for the magnetization $m$ over time for different temperatures. The lattice length $L$ was $100$. The time is measured in sweeps, where one sweep equals $L^2$ steps.}\label{fig:evolution}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.2\textwidth]{{{snapshot_1.000}}}
+    \caption{$T = 1$}\label{fig:snap_1}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.2\textwidth]{{{snapshot_2.000}}}
+    \caption{$T = 2$}\label{fig:snap_2}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.2\textwidth]{{{snapshot_2.200}}}
+    \caption{$T = 2.2$}\label{fig:snap_22}
+  \end{subfigure}\\
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.2\textwidth]{{{snapshot_2.300}}}
+    \caption{$T = 2.3$}\label{fig:snap_23}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.2\textwidth]{{{snapshot_3.000}}}
+    \caption{$T = 3$}\label{fig:snap_3}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=1.2\textwidth]{{{snapshot_4.000}}}
+    \caption{$T = 4$}\label{fig:snap_4}
+  \end{subfigure}%
+    \caption{Snapshots of the spin states of a $100 \times 100$ lattice, for different temperatures $T$.}\label{fig:snapshot}
+\end{figure}
+
+First of all we want to look at the evolution of the magnetization $m$ over time and some snapshots. The time evolution for different temperatures is plotted in figure~\ref{fig:evolution}.\\
+First of all we can see, that the magnetization $m$ drops with increasing temperature. We will be able to see this better in another plot. Aside from this, we see, that the standard-deviation of the magnetization increases, when the temperature gets nearer to the critical temperature $T_{crit} = 2.269$. Especially for $T = 2.3$, we can see, that the sign of the magnetization changes often, even though the mean is quite a lot bigger than $0$.\\
+The snapshots for some temperatures are plotted in figure~\ref{fig:snapshot}. For low temperatures, e.g.~\ref{fig:snap_1} and~\ref{fig:snap_2} we can see, that nearly all spins point in the same direction, so the magnetization is near $1$.\\
+Around the phase transition we find clusters of spins pointing in different directions. This can be seen especially well in figure~\ref{fig:snap_23}. And for high temperatures we can see, that the spins are pointing randomly in different directions, so that the magnetization tends to $0$.
+
+% -----------------------------------------------------------------------------
+% Autocorrelation
+% -----------------------------------------------------------------------------
+
+\subsection{Autocorrelation}
+
+\begin{figure}
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{corr_20}
+    \caption{$L = 20$}\label{fig:corr_20}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{corr_60}
+    \caption{$L = 60$}\label{fig:corr_60}
+  \end{subfigure}%
+  \begin{subfigure}{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{corr_100}
+    \caption{$L = 100$}\label{fig:corr_100}
+  \end{subfigure}%
+  \caption{Autocorrelation of the magnetization Corr$(t)$ for different lattice-sizes and temperatures. The time is measured in sweeps, where one sweep equals $L^2$ steps.}\label{fig:corr}
+\end{figure}
