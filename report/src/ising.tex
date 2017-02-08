@@ -23,7 +23,12 @@ One of the interesting properties of this model is the phase transition. At a sp
 % TODO: improve this paragraph, maybe add note about conjugated variables
 The magnetic susceptibility $\chi$ is one of the quantities, that can be described with this model. It is defined by
 \begin{equation}
- \chi = \frac{\beta}{N} \text{Var}(\abs{m}).
+ \chi = \frac{\beta}{N} \text{Var}(\abs{m}).\label{eq:suscep}
 \end{equation}
-Here Var$(\abs{m})$ denotes the variance $\mean{{(\abs{m} - \mean{\abs{m}})} ^2}$. For very low or high temperatures there is only a small range of magnetizations and energies available, so the variance is quite small and thus the susceptibility. But for temperatures around the phase transition there are a lot of possible states, between which the system can move, so the variance is quite big, as is the susceptibility.
-% TODO: Add short paragraph on finite-size scaling
+Here Var$(\abs{m})$ denotes the variance $\mean{{(\abs{m} - \mean{\abs{m}})} ^2}$. For very low or high temperatures there is only a small range of magnetizations and energies available, so the variance is quite small and thus the susceptibility. But for temperatures around the phase transition there are a lot of possible states, between which the system can move, so the variance is quite big, as is the susceptibility.\\
+
+Since we have a system, which is analytically described for an infinitely large lattice we will have finite-size effects. These depend on the chosen lattice-size and will be looked at later. To make our results more scalable we will look at the finite-size scaling. This can be done by defining a new quantity $\xi$, which is an extension of the susceptibility $\chi$, by
+\begin{equation}
+  \xi(t) = \chi L^{-a/b} (L^{1/b} t),
+\end{equation}
+where $t = (T - T_{crit})/T_{crit}$ and $a$, $b$ are scaling parameters. For $a = 7/4$, $b = 1$ this quantity $\xi$ will be independent of the lattice size.

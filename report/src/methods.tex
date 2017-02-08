@@ -12,7 +12,7 @@ One of the most popular algorithms for the Ising-model is the Metropolis-algorit
 If the flip is accepted we keep state $\nu$ and advance to the next step. If it is rejected, then we return to state $\mu$ and choose a new lattice-site.\\
 This algorithm helps to sample all the possible states, but it also helps us to escape for local minimum, by sometimes taking a step, that is worse in the short run, but may bring us closer to the global minimum.\\
 
-Some of the quantities, that interest us are the magnetization $m$, the energy $E$. More precisely their mean and variance. They can be calculated by simply using their definition. But the autocorrelation function Corr$(t)$ for the magnetization would need a lot of computing time. This can be reduced by using the Fourier-transformation (denoted by a $\hat{}$ over the quantity) and by using the definition $m'(t) = m(t) - \mean{m}$.
+Some of the quantities, that interest us are the magnetization $m$, the energy $E$. More precisely their mean and variance. They can be calculated by simply using their definition. But the autocorrelation function Corr$(t)$ for the absolute of the magnetization $\abs{m}$ would need a lot of computing time. This can be reduced by using the Fourier-transformation (denoted by a $\hat{}$ over the quantity) and by using the definition $m'(t) = \abs{m(t)} - \mean{\abs{m}}$.
 \begin{align}
   \hat{\text{Corr}}(\omega) & = \int dt e^{i \omega t} \text{Corr}(t) \\
   & = \int dt \; e^{i \omega t} \int dt'\; m'(t') m'(t'+t) \\
@@ -29,5 +29,5 @@ So the Fourier transformed Autocorrelation is simply the squared absolute of the
 After we found the variance, mean and autocorrelation we need a measure for the error. We can't use the standard-deviation (stdev) directly, because the the quantities depend on a lot of measurements, so the stdev of $m$ is not the same as the stdev of $\mean{m}$.\\
 To still get a good estimate of the error for complex quantities we can use the bootstrap algorithm. First we one to look at, so let us take, for example, the susceptibility $\chi$. To calculate it we have a dataset of a given length $l$. We resample this data in a new dataset on length $l$ by randomly choosing a value of our original set. The value can be a duplicate of an element already in our new set. So in our new set we have a subset of our original data and use this to calculate the susceptibility $\chi$. This process is repeated multiple times, then the stdev $\sigma$ of the susceptibility is given by
 \begin{equation}
-  \sigma = \sqrt{\mean{\chi^2} - \mean{\chi}^2}
+  \sigma = \sqrt{\mean{\chi^2} - \mean{\chi}^2}.
 \end{equation}
