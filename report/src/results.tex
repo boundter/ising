@@ -1,5 +1,7 @@
 \section{Results}
 
+For the following results we will always use that $J = k_B = 1$. A good, or lattice-size independent, timescale is a sweep. One sweep consists of $L^2$ steps. So for every lattice-site there is a flip. Some sites may not be chosen, but this does not concern us.
+
 % -----------------------------------------------------------------------------
 % Time evolution
 % -----------------------------------------------------------------------------
@@ -47,9 +49,9 @@
 \end{figure}
 
 First of all we want to look at the evolution of the magnetization $m$ over time and some snapshots. The time evolution for different temperatures is plotted in figure~\ref{fig:evolution}.\\
-First of all we can see, that the magnetization $m$ drops with increasing temperature. We will be able to see this better in another plot. Aside from this, we see, that the standard-deviation of the magnetization increases, when the temperature gets nearer to the critical temperature $T_{crit} = 2.269$. Especially for $T = 2.3$, we can see, that the sign of the magnetization changes often, even though the mean is quite a lot bigger than $0$.\\
-The snapshots for some temperatures are plotted in figure~\ref{fig:snapshot}. For low temperatures, e.g.~\ref{fig:snap_1} and~\ref{fig:snap_2} we can see, that nearly all spins point in the same direction, so the magnetization is near $1$.\\
-Around the phase transition we find clusters of spins pointing in different directions. This can be seen especially well in figure~\ref{fig:snap_23}. And for high temperatures we can see, that the spins are pointing randomly in different directions, so that the magnetization tends to $0$.
+First of all we can see that the magnetization $m$ drops with increasing temperature. We will be able to see this better in another plot. Aside from this, we see that the standard-deviation of the magnetization increases, when the temperature gets nearer to the critical temperature $T_{crit} = 2.269$. Especially for $T = 2.3$ the sign of the magnetization changes often, even though the mean is quite a lot bigger than $0$.\\
+The snapshots for some temperatures are plotted in figure~\ref{fig:snapshot}. For low temperatures, e.g.~\ref{fig:snap_1} and~\ref{fig:snap_2} nearly all spins point in the same direction, so the magnetization is near $1$.\\
+Around the phase transition we find clusters of spins pointing in different directions. This can be seen especially well in figure~\ref{fig:snap_23}. And for high temperatures the spins are pointing randomly in different directions, so the magnetization tends to $0$.
 
 % -----------------------------------------------------------------------------
 % Autocorrelation
@@ -76,8 +78,8 @@ Around the phase transition we find clusters of spins pointing in different dire
   \caption{Autocorrelation of the magnetization Corr$(t)$ for different lattice-sizes and temperatures. The time is measured in sweeps, where one sweep equals $L^2$ steps.}\label{fig:corr}
 \end{figure}
 
-The autocorrelation function gives us an estimate for the correlation time $\tau$, the time the system need to transition from one state to another independent state. Generally the autocorrelation should fall of as Corr$(t) \sim e^{-t/\tau}$. So we could fit the data to find the exact correlation times. But for a qualitative observation about the system we can also look at the point, where the correlation gets constant.\\
-The correlation is plotted in figure~\ref{fig:corr}. Generally we can see, that the correlation near the phase transition is the highest and also, that it needs the longest time to get stationary.\\
+The autocorrelation function gives us an estimate for the correlation time $\tau$, the time the system need to transition from one state to another, independent state. Generally the autocorrelation should fall of as Corr$(t) \sim e^{-t/\tau}$. So we could fit the data to find the exact correlation times. But for a qualitative observation about the system we can also look at the point, where the correlation gets constant.\\
+The correlation is plotted in figure~\ref{fig:corr}. Generally we can see that the correlation near the phase transition is the highest and also that it needs the longest time to get stationary.\\
 For example in figure~\ref{fig:corr_100} the time to stationarity for $T=2.3$ is in the order of $5000\, $sweeps, whereas for the temperatures $T=1, 2, 3, 4$ it only takes about $10$ to $20\,$sweeps. The time difference is significant. For $T=2.2$ we have a time to stationarity of about $1000 \,$sweeps. So even though $T=2.3$ is just slightly closer to the phase transition it still needs $5$ times as long.\\
 All these results are only qualitative, but the general idea also translates to the quantitative results. The closer we are to the phase transition, the longer our correlation time will be.
 
@@ -90,14 +92,14 @@ All these results are only qualitative, but the general idea also translates to 
 \begin{figure}
   \centering
   \includegraphics[width=.7\textwidth]{mean}
-  \caption{Mean $\mean{\abs{m}}$ of the absolute of the  magnetization for different temperatures $T$ and lattice-length $L$. The error of every measurement has been calculated using the bootstrap algorithm for an initial dataset of $10000\,$sweeps.}\label{fig:mean}
+  \caption{Mean $\mean{\abs{m}}$ of the absolute value of the  magnetization for different temperatures $T$ and lattice-length $L$. The error of every measurement has been calculated using the bootstrap algorithm for an initial dataset of $10000\,$sweeps.}\label{fig:mean}
 \end{figure}
 
-The phase transition of the Ising model happens at the temperature $T_{crit} = 2.269$ and is characterized by the sudden drop of full magnetization to no magnetization. This temperature can be analytically calculated for an infinite lattice, so we can assume, that we will find a different temperature for our finite-size ones.\\
-The mean $\mean{\abs{m}}$ is plotted in figure~\ref{fig:mean}. There we can observe different things. For one we see, that we approximate the sudden drop better, if we use a bigger lattice. For $L=20$ we can see a smooth transition and the system retains some magnetization. For $L=100$ on the other hand we can see a relatively sharp drop and a weaker magnetization.\\
+The phase transition of the Ising model happens at the temperature $T_{crit} = 2.269$ and is characterized by the sudden drop of full magnetization to no magnetization. This temperature can be analytically calculated for an infinite lattice. We will find a different temperature, since we only have a finite one.\\
+The mean $\mean{\abs{m}}$ is plotted in figure~\ref{fig:mean}. Here we can observe different things. For one, we can see that we approximate the sudden drop better, if we use a bigger lattice. For $L=20$ we can see a smooth transition and the system retains some magnetization. For $L=100$ on the other hand we can see a relatively sharp drop and a weaker magnetization.\\
 Because of these smooth drops there are different transition temperatures for the lattices. The smaller the lattice, the bigger the transition temperature.\\
 
-Whats also interesting to note is the error on the measurements. It is quite small everywhere, but at the phase transition it increases. This could have two different origins. For one it could come from the long correlation time around the phase transition. If we take the same amount of time to average over we have less independent states and thus a smaller sample size.\\
+What is also interesting to note is the error on the measurements. It is quite small everywhere, except at the phase transition. This could have two different origins. For one it could come from the long correlation time around the phase transition. If we take the same amount of time to average over we will have less independent states and thus a smaller sample size.\\
 But it could also be a result of the strong fluctuations around the transition, that we have seen in figure~\ref{fig:evolution}.
 
 % -----------------------------------------------------------------------------
@@ -112,9 +114,9 @@ But it could also be a result of the strong fluctuations around the transition, 
   \caption{Susceptibility $\chi$ for different temperatures $T$ and lattice-length $L$. The error of every measurement has been calculated using the bootstrap algorithm for an initial dataset of $10000\,$sweeps.}\label{fig:suscep}
 \end{figure}
 
-The susceptibility $\chi$ is proportional to the variance of the magnetization $\abs{m}$ (see (\ref{eq:suscep})). So from figure~\ref{fig:mean}, we can assume, that the susceptibility is biggest near the phase transition, if we assume the variance to be proportional to the error. We also know, that the susceptibility is proportional to the lattice-size, so we can assume it to be bigger for a bigger lattice.\\
-The susceptibility for different lattice-sizes and temperatures is plotted in figure~\ref{fig:suscep}. We can see, that it behaves as expected. First of all it has a peak near the phase transition and it is bigger for bigger lattice-sizes.\\
-We can also see, that the peak is closer to the critical temperature, if the lattice is bigger. As for the error, there we can again see, that it is bigger, if we are close to the phase transition. These are the same observations, that we already made for the mean. And we also see, that the peak does not get wider, even though it becomes higher.
+The susceptibility $\chi$ is proportional to the variance of the magnetization $\abs{m}$ (see (\ref{eq:suscep})). So using figure~\ref{fig:mean}, we can assume that the susceptibility is biggest near the phase transition, if we assume the variance to be proportional to the error. We also know that the susceptibility is proportional to the lattice-size, so we can assume it to be bigger for a bigger lattice.\\
+The susceptibility for different lattice-sizes and temperatures is plotted in figure~\ref{fig:suscep}. We can see that it behaves as expected. First of all it has a peak near the phase transition and it is bigger for bigger lattice-sizes.\\
+We can also see that the peak is closer to the critical temperature, if the lattice is bigger. As for the error, we again find that it is bigger, if we are close to the phase transition. These are the same observations that we already made for the mean.
 
 % -----------------------------------------------------------------------------
 % Finite-size
@@ -128,5 +130,5 @@ We can also see, that the peak is closer to the critical temperature, if the lat
   \caption{Finite-size scaling $\chi L^{-a/b}(L^{1/b}t)$ for different temperatures $T$ and lattice-length $L$, where $t = (T - T_{crit})/T_{crit}$. The used parameters are: $a = 1.71$, $b = 1$, $T_{crit} = 2.27$. The error of every measurement has been calculated using the bootstrap algorithm for an initial dataset of $10000\,$sweeps.}\label{fig:finite}
 \end{figure}
 
-The finite-size scaling gives the dependence of the susceptibility on the lattice-size. So if the right scaling has been found all points should collapse on one line. This is plotted in figure~\ref{fig:finite}. We can see, that all points are very close to each other, especially far from the phase transition $t = 0$. But the nearer we get to the phase transition, the more they start to deviate from a line. This is to be expected, since we have seen before, that the errors around the phase transition are quite big. Otherwise they collapse quite nicely.\\
-If we compare the fitted parameters to the literature ones $a = \frac{7}{4} = 1.75$, $b = 1$, $T_{crit} = 2.269$, we find that they are quite close to each other. This is as much as can be expected, for noisy data and a fit by hand. 
+The finite-size scaling gives the dependence of the susceptibility on the lattice-size. So if the right scaling has been found, then all points should collapse on one curve. This is plotted in figure~\ref{fig:finite}. We can see that all points are very close to each other, especially far from the phase transition $t = 0$. But the nearer we get to the phase transition, the more they start to deviate from a line. This is to be expected, since we have seen before that the errors around the phase transition are big. Otherwise they collapse quite nicely.\\
+If we compare the fitted parameters to the literature ones $a = 1.75$, $b = 1$, $T_{crit} = 2.269$, we find that they are quite close to each other. This is as much as can be expected, for noisy data and a fit by hand.
